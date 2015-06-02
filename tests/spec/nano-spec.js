@@ -9,7 +9,7 @@
     height = null;
     spyScrolltop = null;
     spyScrollend = null;
-    jasmine.getFixtures().fixturesPath = 'spec/fixtures';
+    jasmine.getFixtures().fixturesPath = 'tests/spec/fixtures';
     describe("when the plugin is called without any options and there is content", function() {
       beforeEach(function() {
         loadFixtures('nano-content.html');
@@ -23,26 +23,20 @@
         it("should exist", function() {
           expect($content).toExist();
           expect($content.length).toBeTruthy();
-          return expect($nano).toContain("div.nano-content");
+          return expect($nano).toContainElement("div.nano-content");
         });
-        it("should have tabindex attribute set", function() {
+        return it("should have tabindex attribute set", function() {
           return expect($content).toHaveAttr('tabindex');
-        });
-        return it("should have a height of 200px", function() {
-          return expect($content.height()).toEqual(200);
         });
       });
       describe("pane element", function() {
         beforeEach(function() {
           return $pane = $nano.find('.nano-pane');
         });
-        it("should exist", function() {
+        return it("should exist", function() {
           expect($pane).toExist();
           expect($pane.length).toBeTruthy();
-          return expect($nano).toContain("div.nano-pane");
-        });
-        return it("should have a height of 200px", function() {
-          return expect($pane.height()).toEqual(200);
+          return expect($nano).toContainElement("div.nano-pane");
         });
       });
       describe("slider element", function() {
@@ -52,7 +46,7 @@
         it("should exist", function() {
           expect($slider).toExist();
           expect($slider.length).toBeTruthy();
-          return expect($nano).toContain("div.nano-slider");
+          return expect($nano).toContainElement("div.nano-slider");
         });
         return it("should have style attribute set", function() {
           return expect($slider).toHaveAttr('style');
@@ -70,6 +64,7 @@
           return $slider = $nano.find('.nano-slider');
         });
         it("should have set .nano-slider CSS 'top' value to 0px", function() {
+          console.log($slider.attr('style'));
           return expect($slider).toHaveCss({
             top: '0px'
           });
@@ -169,7 +164,7 @@
         it("should exist", function() {
           expect($content).toExist();
           expect($content.length).toBeTruthy();
-          return expect($nano).toContain("div.nano-content");
+          return expect($nano).toContainElement("div.nano-content");
         });
         it("should have tabindex attribute set", function() {
           return expect($content).toHaveAttr('tabindex');
@@ -185,7 +180,7 @@
         it("should exist", function() {
           expect($pane).toExist();
           expect($pane.length).toBeTruthy();
-          return expect($nano).toContain("div.nano-pane");
+          return expect($nano).toContainElement("div.nano-pane");
         });
         it("should have a height of 200px", function() {
           return expect($pane.height()).toEqual(200);
@@ -201,7 +196,7 @@
         it("should exist", function() {
           expect($slider).toExist();
           expect($slider.length).toBeTruthy();
-          return expect($nano).toContain("div.nano-slider");
+          return expect($nano).toContainElement("div.nano-slider");
         });
         return it("should have style attribute set", function() {
           return expect($slider).toHaveAttr('style');
